@@ -39,7 +39,7 @@ interface AliasConfigurationInterface extends ConfigurationInterface
     /**
      * Returns all aliases.
      *
-     * @return array The aliases
+     * @return AliasInterface[] The aliases
      */
     public function getAliases(): array;
 }

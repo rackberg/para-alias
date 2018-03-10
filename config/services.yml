@@ -1,1 +1,11 @@
 services:
+  para_alias.configuration.alias_configuration:
+    class: ParaAlias\Configuration\AliasConfiguration
+    arguments:
+      - '@para.'
+      - '@para.yaml.dumper'
+
+  para.check_command_for_alias_subscriber:
+    class: ParaAlias\EventSubscriber\CheckCommandForAliasSubscriber
+      tags:
+          - { name: 'kernel.event_subscriber' }
