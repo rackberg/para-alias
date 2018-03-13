@@ -56,6 +56,8 @@ class AliasConfiguration extends AbstractConfiguration implements AliasConfigura
     {
         parent::load($fileName);
 
+        $this->aliases = [];
+
         if (isset($this->configuration['aliases'])) {
             foreach ($this->configuration['aliases'] as $name => $value) {
                 $this->aliases[$name] = $this->aliasFactory->getAlias($name, $value);
@@ -68,6 +70,8 @@ class AliasConfiguration extends AbstractConfiguration implements AliasConfigura
      */
     public function save(string $fileName): bool
     {
+        unset($this->configuration['aliases']);
+
         foreach ($this->aliases as $alias) {
             $this->configuration['aliases'][$alias->getName()] = $alias->getValue();
         }

@@ -2,10 +2,15 @@ services:
   para_alias.configuration.alias_configuration:
     class: ParaAlias\Configuration\AliasConfiguration
     arguments:
-      - '@para.'
+      - '@para.yaml.parser'
       - '@para.yaml.dumper'
+      - '@para_alias.factory.alias_factory'
 
   para.check_command_for_alias_subscriber:
     class: ParaAlias\EventSubscriber\CheckCommandForAliasSubscriber
-      tags:
-          - { name: 'kernel.event_subscriber' }
+    arguments: ['@para_alias.configuration.alias_configuration', '%para.config%']
+    tags:
+        - { name: 'kernel.event_subscriber' }
+
+  para_alias.factory.alias_factory:
+    class: ParaAlias\Factory\AliasFactory

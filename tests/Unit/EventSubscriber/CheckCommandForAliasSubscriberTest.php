@@ -36,9 +36,11 @@ class CheckCommandForAliasSubscriberTest extends TestCase
     protected function setUp()
     {
         $this->aliasConfiguration = $this->prophesize(AliasConfigurationInterface::class);
+        $this->aliasConfiguration->load(Argument::type('string'))->shouldBeCalled();
 
         $this->eventSubscriber = new CheckCommandForAliasSubscriber(
-            $this->aliasConfiguration->reveal()
+            $this->aliasConfiguration->reveal(),
+            'the/path/to/the/config/file.yml'
         );
     }
     

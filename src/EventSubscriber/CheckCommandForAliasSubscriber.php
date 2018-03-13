@@ -21,6 +21,13 @@ class CheckCommandForAliasSubscriber implements EventSubscriberInterface
     private $aliasConfiguration;
 
     /**
+     * The path to the config file.
+     *
+     * @var string
+     */
+    private $configFile;
+
+    /**
      * {@inheritdoc}
      */
     public static function getSubscribedEvents()
@@ -36,10 +43,14 @@ class CheckCommandForAliasSubscriber implements EventSubscriberInterface
      * CheckCommandForAliasSubscriber constructor.
      *
      * @param AliasConfigurationInterface $aliasConfiguration The alias configuration.
+     * @param string $configFile The path to the config file.
      */
-    public function __construct(AliasConfigurationInterface $aliasConfiguration)
-    {
+    public function __construct(
+        AliasConfigurationInterface $aliasConfiguration,
+        string $configFile
+    ) {
         $this->aliasConfiguration = $aliasConfiguration;
+        $this->configFile = $configFile;
     }
 
     /**
@@ -49,6 +60,8 @@ class CheckCommandForAliasSubscriber implements EventSubscriberInterface
      */
     public function replaceWithAlias(BeforeShellCommandExecutionEvent $event)
     {
+        $this->aliasConfiguration->load($this->configFile);
+
         $command = $event->getCommand();
         $words = explode(' ', trim($command));
 
