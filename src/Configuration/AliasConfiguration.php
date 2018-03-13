@@ -36,23 +36,23 @@ class AliasConfiguration extends AbstractConfiguration implements AliasConfigura
      * @param ParserInterface $parser The parser.
      * @param DumperInterface $dumper The dumper.
      * @param AliasFactoryInterface $aliasFactory The alias factory.
+     * @param string $configFile The path to the config file.
      */
     public function __construct(
         ParserInterface $parser,
         DumperInterface $dumper,
-        AliasFactoryInterface $aliasFactory
+        AliasFactoryInterface $aliasFactory,
+        string $configFile
     ) {
-        parent::__construct(
-            $parser,
-            $dumper
-        );
+        parent::__construct($parser, $dumper, $configFile);
+
         $this->aliasFactory = $aliasFactory;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function load(string $fileName): void
+    public function load(string $fileName = null): void
     {
         parent::load($fileName);
 
@@ -68,7 +68,7 @@ class AliasConfiguration extends AbstractConfiguration implements AliasConfigura
     /**
      * {@inheritdoc}
      */
-    public function save(string $fileName): bool
+    public function save(string $fileName = null): bool
     {
         unset($this->configuration['aliases']);
 

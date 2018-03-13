@@ -62,7 +62,8 @@ class AliasConfigurationTest extends TestCase
         $this->aliasConfiguration = new AliasConfiguration(
             $this->parser->reveal(),
             $this->dumper->reveal(),
-            $this->aliasFactory->reveal()
+            $this->aliasFactory->reveal(),
+            'the/path/to/the/config/file.yml'
         );
     }
 

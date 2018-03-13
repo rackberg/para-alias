@@ -5,6 +5,9 @@ services:
       - '@para.yaml.parser'
       - '@para.yaml.dumper'
       - '@para_alias.factory.alias_factory'
+      - '%para.config%'
+    calls:
+      - [load]
 
   para.check_command_for_alias_subscriber:
     class: ParaAlias\EventSubscriber\CheckCommandForAliasSubscriber
