@@ -1,4 +1,12 @@
 services:
+  para_alias.command.add_alias_command:
+    class: ParaAlias\Command\AddAliasCommand
+    arguments:
+      - '@para_alias.configuration.alias_configuration'
+      - '@para_alias.factory.alias_factory'
+    tags:
+      - { name: console.command, command: 'alias:add' }
+
   para_alias.configuration.alias_configuration:
     class: ParaAlias\Configuration\AliasConfiguration
     arguments:
