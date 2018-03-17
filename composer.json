@@ -19,6 +19,6 @@
     "phpunit/phpunit": "^6.0",
     "mikey179/vfsStream": "^1.6",
     "php-mock/php-mock-prophecy": "^0.0.2",
-    "lrackwitz/para": "dev-master"
+    "lrackwitz/para": "^2.2"
   }
 }
