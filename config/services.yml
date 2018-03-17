@@ -7,6 +7,19 @@ services:
     tags:
       - { name: console.command, command: 'alias:add' }
 
+  para_alias.command.remove_alias_command:
+    class: ParaAlias\Command\RemoveAliasCommand
+    arguments: ['@para_alias.configuration.alias_configuration']
+    tags:
+      - { name: console.command, command: 'alias:remove' }
+
+  para_alias.command.list_aliases_command:
+    class: ParaAlias\Command\ListAliasesCommand
+    arguments: ['@para_alias.configuration.alias_configuration', '@para.factory.table_output_factory']
+    tags:
+      - { name: console.command, command: 'aliases:list' }
+      - { name: console.command, command: 'aliases' }
+
   para_alias.configuration.alias_configuration:
     class: ParaAlias\Configuration\AliasConfiguration
     arguments:

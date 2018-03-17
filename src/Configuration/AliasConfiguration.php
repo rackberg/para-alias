@@ -98,7 +98,7 @@ class AliasConfiguration extends AbstractConfiguration implements AliasConfigura
     /**
      * {@inheritdoc}
      */
-    public function getAlias(string $name): ?Alias
+    public function getAlias(string $name): ?AliasInterface
     {
         return isset($this->aliases[$name]) ? $this->aliases[$name] : null;
     }

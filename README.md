@@ -31,6 +31,17 @@ Arguments:<br>
 `alias`: The name of the alias.<br>
 `value`: The value of the alias.
 
+### Show a list of configured aliases
+```
+para aliases:list
+```
+
+### Remove an alias
+```
+para alias:remove <name>
+```
+Arguments:<br>
+`name`: The name of the alias.
 
 ## Contributing
 Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on the code of conduct, and the process for creating issues or submitting pull requests.

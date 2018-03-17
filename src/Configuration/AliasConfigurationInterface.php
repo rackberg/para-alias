@@ -32,9 +32,9 @@ interface AliasConfigurationInterface extends ConfigurationInterface
      *
      * @param string $name The name of the alias.
      *
-     * @return null|Alias The alias instance or null.
+     * @return null|AliasInterface The alias instance or null.
      */
-    public function getAlias(string $name): ?Alias;
+    public function getAlias(string $name): ?AliasInterface;
 
     /**
      * Returns all aliases.
